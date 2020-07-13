@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <title>Big Ten COVID-19 case count</title>
+    <style>
+        html, body {
+          height: 100%;
+          margin: 0;
+        }
+        #map {
+          width: 100%;
+          height: 100%;
+        }
+    </style>
+</head>
+<body>
+  <div id='map'></div>
+
+  <script>
+    	var map = L.map('map').setView([42.713955826286046, -86.580078125], 5);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJjazVzbzgwdnowcHp2M2VtanNsemFybm53In0.mcW15QN53dKi4J1gKoJKyQ'
+    }).addTo(map);
+
+    	var LeafIcon = L.Icon.extend({
+    		options: {
+    			iconSize: [22, 22],
+    			iconAnchor: [16, 16],
+    			popupAnchor: [-8, -20]
+    		}
+    	});
+
+    	var iaIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		michIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		purdueIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		uwmadIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		osuIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		nebIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		pennIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		msuIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		minnIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		illIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		indIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		maryIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		nwestIcon = new LeafIcon({iconUrl: 'stadium.svg'}),
+    		rutIcon = new LeafIcon({iconUrl: 'stadium.svg'});
+
+        L.marker([41.66060124302088, -91.53602600097656,], {icon: iaIcon}).bindPopup("<b>University of Iowa</b>: July 13 — The Iowa athletics department announced that it conducted 30 COVID-19 tests for the week of July 6-12 and received four positive tests and 26 negative tests. As part of Iowa’s return to campus protocol, testing began May 29 and includes student-athletes, coaches, and staff. A total of 25 positive tests and 418 negative tests have been received.").addTo(map);
+        L.marker([40.4240, -86.9290,], {icon: purdueIcon}).bindPopup("<b>Purdue University</b>: July 8 — The Purdue athletics department acknowledged additional positive COVID-19 tests among athletes, coaches, or staff members after making its first announcement of positive tests June 25. According to the <a href='https://www.jconline.com/story/sports/2020/07/08/purdue-athletics-acknowledges-additional-positive-covid-19-cases/5396905002/'>Lafayette Journal &amp; Courier</a>, an athletics department spokesperson declined to provide the number of positive tests or if any sports have suspended voluntary workouts due to the additional cases.").addTo(map);
+        L.marker([42.29407210639585, -83.7103271484375,], {icon: michIcon}).bindPopup("<b>University of Michigan</b>: July 10 — The Michigan athletics department announced two positive COVID-19 tests out of 192 tests administered. Michigan’s total is now at four positive tests out of 514. All four positive tests came from student-athletes. So far, according to <a href='https://247sports.com/college/michigan/Article/Michigan-athletics-reports-two-more-positive-COVID-19-tests-football-149025228/'>247 Sports</a>, Michigan has administered 375 student-athlete tests and 139 coaching and staff member tests.").addTo(map);
+        L.marker([43.0704, -89.4035,], {icon: uwmadIcon}).bindPopup("<b>University of Wisconsin-Madison</b>: July 8 — The Wisconsin athletics department started testing June 8 and has now conducted a total of 428 COVID-19 tests, resulting in seven student-athletes testing positive, according to a press release.").addTo(map);
+        L.marker([39.999260, -83.014824,], {icon: osuIcon}).bindPopup("<b>Ohio State University</b>: July 8 — The Ohio State athletics department announced it was pausing all voluntary workouts following its most recent COVID-19 testing results. Seven teams are affected: football, men’s and women’s basketball, field hockey, men’s and women’s soccer, and women’s volleyball. Ohio State is not sharing COVID-19 testing information publicly, saying it could lead to the identification of individuals and compromise their medical privacy.").addTo(map);
+        L.marker([40.824340820, -96.662666321,], {icon: nebIcon}).bindPopup("<b>University of Nebraska-Lincoln</b>: June 29 — The Nebraska athletics department has not released testing data to date, but head football coach Scott Frost said June 29 that the department has tested “roughly 250 people” since April and received eight positive tests. Five football players and one staff member were among those to test positive. Of the positive tests, two players and one staff member arrived in Lincoln from other places and then tested positive. The other three players caught the virus within the community, according to <a href='http://www.dailynebraskan.com/sports/frost-five-husker-football-players-have-tested-positive-for-covid-19-since-april/article_f14faca6-ba51-11ea-a682-9f37c300b671.html'>The Daily Nebraskan</a>.").addTo(map);
+        L.marker([40.796036, -77.862739,], {icon: pennIcon}).bindPopup("<b>Penn State University</b>: July 1 — According to a press release from the Penn State athletics department, of its first 102 COVID-19 tests completed, none have come back positive.").addTo(map);
+        L.marker([42.723387, -84.481366,], {icon: msuIcon}).bindPopup("<b>Michigan State University</b>: July 13 — Michigan State’s athletics department reported zero positive COVID-19 tests after testing 74 athletes on July 6. Overall, Michigan State has reported that five athletes have tested positive for COVID-19 since starting voluntary workouts June 15.").addTo(map);
+        L.marker([44.9718, -93.2338,], {icon: minnIcon}).bindPopup("<b>University of Minnesota</b>: June 30 — The Minnesota athletics department announced 170 COVID-19 tests were conducted in June and seven athletes from multiple sports tested positive.").addTo(map);
+        L.marker([40.106322908, -88.2237124385,], {icon: illIcon}).bindPopup("<b>University of Illinois Urbana-Champaign</b>: The Illinois athletics department said it is not sharing or confirming any information regarding the health of student-athletes or staff members as it pertains to COVID-19 throughout the summer and the new academic year, citing privacy laws.").addTo(map);
+        L.marker([39.167322, -86.521414,], {icon: indIcon}).bindPopup("<b>Indiana University Bloomington</b>: July 10 — In its latest COVID-19 testing update, the Indiana athletics department reported four tests have returned positive out of 112 tests conducted on players, coaches, and staff during the timeframe of June 24-July 8. In total, Indiana has tested 299 times and had four positive test results, according to the <a href='https://www.indystar.com/story/sports/college/indiana/2020/07/10/iu-athletics-reports-4-positive-covid-19-tests/5417407002/'>Indy Star</a>.").addTo(map);
+        L.marker([38.9858, -76.9373,], {icon: maryIcon}).bindPopup("<b>University of Maryland</b>: July 11 — The Maryland athletics department announced that the University Health Center conducted on-campus screening of 185 student-athletes and staff on July 7-8 and nine individuals tested positive. In the previous round of testing of 105 individuals in June, nobody tested positive for COVID-19. Due to the recent positive tests, Maryland has suspended football voluntary workouts.").addTo(map);
+        L.marker([42.054853, -87.673945,], {icon: nwestIcon}).bindPopup("<b>Northwestern University</b>: In an email to <i>The Daily Iowan</i>, a member of the Northwestern athletics department said the school is not sharing COVID-19 testing information or results.").addTo(map);
+        L.marker([40.7416, -74.1749,], {icon: rutIcon}).bindPopup("<b>Rutgers University</b>: June 21 — Rutgers head football coach Greg Schiano confirmed that two football players had tested positive for COVID-19. According to the <a href='https://www.inquirer.com/college-sports/rutgers-football-two-players-coronavirus-covid-19-20200622.html'>Philadelphia Inquirer</a>, Schiano said the team, which returned for voluntary workouts June 15, has done three rounds of testing.").addTo(map);
+
+      </script>
+
+  </body>
+  </html>
